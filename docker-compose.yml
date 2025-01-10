@@ -4,6 +4,8 @@ services:
     build: ./fluentd
     volumes:
       - ./fluentd/conf:/fluentd/etc
+    env_file:
+      - .env
     ports:
       - "24224:24224"
       - "24224:24224/udp"
@@ -19,6 +21,7 @@ services:
     environment:
       - "discovery.type=single-node"
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"  # Adjust heap size
+      - ELASTIC_PASSWORD=${ELASTICSEARCH_PASSWORD}
     volumes:
       - es_data:/usr/share/elasticsearch/data
     networks:
