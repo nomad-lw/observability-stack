@@ -82,3 +82,14 @@ This will stop all the services.
 ### Backups
 
 ### Hardening
+
+
+
+
+
+
+
+---
+
+#### References
+- https://www.elastic.co/guide/en/elasticsearch/reference/8.17/docker.html#docker-compose-file
