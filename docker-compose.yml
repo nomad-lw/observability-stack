@@ -72,7 +72,6 @@ services:
       _setup:
         condition: service_healthy
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
-    container_name: elasticsearch
     environment:
       - "discovery.type=single-node"
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # Adjust heap size
@@ -137,6 +136,9 @@ services:
 
 networks:
   logging-network:
+    external: true
+    name: logging-network
+
 
 volumes:
   certs:
