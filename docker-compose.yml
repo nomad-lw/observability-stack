@@ -90,6 +90,17 @@ services:
       - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt
       - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.license.self_generated.type=${LICENSE}
+      # Add these memory management settings
+      - "indices.memory.index_buffer_size=10%"  # Default 10% of heap
+      - "indices.queries.cache.size=5%"         # Default 10% of heap
+      - "indices.fielddata.cache.size=5%"       # Default unbounded
+      - "indices.breaker.total.use_real_memory=true"
+      - "indices.breaker.total.limit=70%"       # Default 95%
+      - "indices.breaker.fielddata.limit=40%"   # Default 60%
+      - "indices.breaker.request.limit=40%"     # Default 60%
+      # Enable more aggressive disk-based operations
+      - "indices.memory.max_index_buffer_size=10mb"
+      - "node.store.allow_mmap=false"           # Disable memory mapping
     volumes:
       - certs:/usr/share/elasticsearch/config/certs
       - es_data:/usr/share/elasticsearch/data
