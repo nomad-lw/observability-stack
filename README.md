@@ -1,5 +1,9 @@
 # Sambot's Observability Stack
 
+## CAUTION
+
+This project is still nascent and might not work out-of-the-box in every scenario. This is experimental, use at your own descretion
+
 ## What is this?
 
 This ia a collection of tools and resources I am continusally experimenting with to help me understand how to build a robust observability stack for my projects.
